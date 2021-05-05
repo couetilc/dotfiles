@@ -1,0 +1,9 @@
+[user]
+  name = Connor Couetil
+  email = couetilc@gmail.com
+  username = couetilc
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+[init]
+  defaultBranch = main

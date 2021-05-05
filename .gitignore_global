@@ -1,0 +1,15 @@
+# test directory
+scratch/
+
+# Node build files
+node_modules
+
+# VIM usage files
+*.sw[op]
+
+# SASS build files
+.sass-cache
+*.css.map
+
+# MacOS directory files
+.DS_Store
