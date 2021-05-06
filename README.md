@@ -19,10 +19,6 @@ dotfiles commit -m "add vimrc"
 dotfiles push
 ```
 
-(inspiration)
-- https://news.ycombinator.com/item?id=11070797
-- https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles.html
-
 ## CLI software setup
 
 Install HomeBrew ([Website](https://brew.sh/) - [GitHub](https://github.com/Homebrew/brew))
@@ -106,6 +102,11 @@ etckeeper ([Website](https://etckeeper.branchable.com/))
 
 ## Resources
 
+### inspiration
+- https://news.ycombinator.com/item?id=11070797
+- https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles.html
+
+### other dotfiles
 Good overall configuration of many CLI tools.
 https://github.com/kutsan/dotfiles
 
