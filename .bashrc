@@ -3,7 +3,7 @@
 
 #-- Load additional config files --#
 if [ -f ~/.env ]; then
-	source ~/.env
+  source ~/.env
 fi
 
 #-- Environment config --#
@@ -16,7 +16,7 @@ export HISTFILESIZE=2000
 export HISTCONTROL=ignorespace
 
 #-- Terminal options --#
-set -o emacs
+set -o emacs # move around the terminal line with emacs key commands
 shopt -s checkwinsize # check the window size after each command to prevent readline wrap problems
 shopt -s globstar # '**' double star now expands and recurses sub-directories
 
@@ -133,6 +133,7 @@ alias ll='ls -l'
 alias la='ls -a -l'
 
 #-- Git aliases --#
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias gs="git status -sb"
 alias gl="git log --pretty=oneline"
 alias glp="git log --graph --pretty=format:'%C(magenta)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit"
@@ -145,7 +146,7 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias gf="git fetch"
 alias gfo="git fetch origin"
-# checkout https://git.kernel.org/pub/scm/git/git.git/plain/contrib/completion/git-completion.bash?id=HEAD
+# see https://git.kernel.org/pub/scm/git/git.git/plain/contrib/completion/git-completion.bash?id=HEAD
 
 #-- NPM aliases --#
 alias npm-lsl="npm ls -g --depth=0 --link=true"
@@ -248,9 +249,15 @@ fi
 #environment flag if .bashrc has been loaded to stop multiple loads
 export IS_LOADED_BASHRC="true"
 
-#--- Resources ---#
-#[1] https://github.com/atomantic/dotfiles/blob/master/homedir/.shellfn
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-eval "$(nodenv init -)" # https://github.com/nodenv/nodenv
+
+if [ -x "$(command -v nodenv)" ]; then
+  eval "$(nodenv init -)" # https://github.com/nodenv/nodenv
+else
+  echo "[.bashrc] 'nodenv' not installed"
+fi
+
+#--- Resources ---#
+#[1] https://github.com/atomantic/dotfiles/blob/master/homedir/.shellfn
