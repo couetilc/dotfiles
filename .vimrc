@@ -71,16 +71,16 @@ set autowrite "automatically save before commands like :next and :make
 set backupcopy=yes "change how vim writes changes to files
 
 set colorcolumn=80 "one more than PEP8 max line size
-"see :help ctermbg for color list (7: light grey)
-highlight ColorColumn ctermbg=7 
-"see :help guibg for color list
-highlight ColorColumn ctermbg=Black 
 set backspace=indent,eol,start "allow backspacing over items
 set autoindent
 set smartindent
 set visualbell "no bell sounds
 
 set showcmd "show (partial) command in status line
+
+"makes the git gutter sign column background color match the the line number
+"column's background color (otherwise is a weird grey)
+highlight! link SignColumn LineNr
 
 """"Personal Key Mappings
 

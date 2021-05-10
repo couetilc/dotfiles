@@ -56,6 +56,12 @@ Install lsd ([GitHub](https://github.com/Peltoche/lsd))
 brew install lsd
 ```
 
+Install Nerd Fonts ([GitHub](https://github.com/ryanoasis/nerd-fonts))
+```
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+```
+
 Install ag ([Website](https://geoff.greer.fm/ag/) - [GitHub](https://github.com/ggreer/the_silver_searcher))
 ```
 brew install the_silver_searcher
