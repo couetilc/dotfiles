@@ -187,7 +187,7 @@ wk() {
   REPO=$1
   BRANCH=$2
   git worktree add "$HOME/wk/$REPO/$BRANCH" "$BRANCH"
-  cp "$HOME/wk/$REPO/master/.env*" "$HOME/wk/$REPO/$BRANCH"
+  ls $HOME/wk/$REPO/master/.env* | xargs -n 1 -J % cp % "$HOME/wk/$REPO/$BRANCH"
   cd "$HOME/wk/$REPO/$BRANCH"
 }
 
