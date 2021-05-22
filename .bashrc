@@ -259,5 +259,11 @@ else
   echo "[.bashrc] 'nodenv' not installed"
 fi
 
+if [ -x "$(command -v rbenv)" ]; then
+  eval "$(rbenv init -)" # https://github.com/rbenv/rbenv
+else
+  echo "[.bashrc] 'rbenv' is not installed"
+fi
+
 #--- Resources ---#
 #[1] https://github.com/atomantic/dotfiles/blob/master/homedir/.shellfn
