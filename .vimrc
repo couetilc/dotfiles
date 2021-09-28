@@ -8,25 +8,40 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 call plug#begin()
+
 Plug 'VundleVim/Vundle.vim'
 Plug 'tpope/vim-fugitive' "git client
 Plug 'scrooloose/nerdtree' "file system explorer
 Plug 'tpope/vim-surround' "modify surrounding characters easily
 Plug 'w0rp/ale' "asynchronous linter
 Plug 'airblade/vim-gitgutter' "shows git diff in sign column
-Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline' "lightweight status bar at bottom (smaller version is called lightline)
 Plug 'vim-airline/vim-airline-themes' "themes for status bar
 Plug 'tpope/vim-commentary' "simple commenting for vim
-Plug 'sheerun/vim-polyglot' "All language packs for vim, basically.
+Plug 'sainnhe/sonokai' " colorscheme
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' } "colorscheme
+" Plug 'ms-jpq/coq_nvim' " autocompletion (ctrl-space for one)
+Plug 'EdenEast/nightfox.nvim' " colorscheme (nightfox, nordfox, palefox) 
+Plug 'Pocco81/Catppuccino.nvim' " colorscheme (catppucino, neon_latte, light_melya)
+Plug 'sheerun/vim-polyglot' " syntax highlighting and indentation for many languages
+
+if has('nvim')
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim' "https://github.com/nvim-telescope/telescope.nvim
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "https://github.com/nvim-treesitter/nvim-treesitter
+Plug 'nvim-treesitter/playground' "try with TSPlaygroundToggle
+Plug 'ishan9299/nvim-solarized-lua'
+endif
+
 call plug#end()
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
-colorscheme solarized
+colorscheme sonokai
 let g:airline_theme="sol"
 
 if has('gui_running')
@@ -95,7 +110,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 " hide all margin helpers/tools to easily copy text
-nnoremap <leader>nn :set number!<cr>:GitGutterToggle<cr>
+nnoremap <leader>nn :set number!<cr>:GitGutterToggle<cr>:ALEToggle<cr>
 
 """"
 
@@ -166,3 +181,29 @@ let g:ale_completion_enabled=0
 set completeopt=menu,preview
 "let g:ale_completion_delay=
 "let g:ale_completion_max_suggestions=
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+syntax off
+
+if has('nvim')
+
+  echom 'nvim:' + has('nvim')
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+    incremental_selection = {
+        enable = false,
+    },
+    ensure_installed = 'maintained'
+}
+EOF
+
+endif

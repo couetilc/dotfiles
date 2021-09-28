@@ -148,6 +148,12 @@ alias gf="git fetch"
 alias gfo="git fetch origin"
 # see https://git.kernel.org/pub/scm/git/git.git/plain/contrib/completion/git-completion.bash?id=HEAD
 
+#-- Git Tasks --#
+git-clean-branches-merged-into-master() {
+  # list branches mered into master | filter out worktress and checked-out branches | delete each branch
+  git branch --merged master | grep -v "[+*]" | xargs git branch -d
+}
+
 #-- NPM aliases --#
 alias npm-lsl="npm ls -g --depth=0 --link=true"
 
@@ -230,6 +236,22 @@ cheatsh() {
 
 coin-flip() {
     jot -r 1 0 "${1:-1}"
+}
+
+check-terminal-colors() {
+  awk 'BEGIN{
+  s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+  for (colnum = 0; colnum<77; colnum++) {
+    r = 255-(colnum*255/76);
+    g = (colnum*510/76);
+    b = (colnum*255/76);
+    if (g>255) g = 510-g;
+      printf "\033[48;2;%d;%d;%dm", r,g,b;
+      printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+      printf "%s\033[0m", substr(s,colnum+1,1);
+    }
+  printf "\n";
+  }'
 }
 
 #-- Additional config --#

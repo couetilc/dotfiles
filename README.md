@@ -8,6 +8,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config status.showUntrackedFiles no
 # to download dotfiles:
 dotfiles remote add origin git@github.com:couetilc/dotfiles.git
+dotfiles fetch origin
 dotfiles checkout main
 ```
 
