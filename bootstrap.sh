@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 HOMEBREW_INSTALLER='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-cmd_exists() { test -x "$(command -v $1)"; 
+cmd_exists() { test -x "$(command -v $1)"; }
 USER_HOME=$HOME # in case sudo changes HOME environment variable
 
 # To bootstrap these dotfiles on a computer:
