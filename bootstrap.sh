@@ -2,7 +2,7 @@
 
 # To bootstrap these dotfiles on a computer:
 #
-#   bash -ic "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/bootstrap/bootstrap.sh)"
+#   bash -ic "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/master/bootstrap.sh)"
 #
 
 HOMEBREW_INSTALLER='/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
