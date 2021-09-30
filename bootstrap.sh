@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 HOMEBREW_INSTALLER='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-cmd_exists() { test -x "$(command -v $1)"; }
+cmd_exists() { test -x "$(command -v "$1")"; }
 USER_HOME=$HOME # in case sudo changes HOME environment variable
 
 # To bootstrap these dotfiles on a computer:
@@ -13,7 +13,7 @@ USER_HOME=$HOME # in case sudo changes HOME environment variable
 
 # set up the bare git repository where the dotfiles will live
 git config --global init.defaultBranch 'main'
-git init --bare $USER_HOME/.dotfiles
+git init --bare "$USER_HOME/.dotfiles"
 alias dotfiles='/usr/bin/git --git-dir=$USER_HOME/.dotfiles/ --work-tree=$USER_HOME'
 dotfiles config status.showUntrackedFiles no
 
@@ -39,4 +39,3 @@ if [ -n "$ZSH_VERSION" ]; then
 elif [ -n "$BASH_VERSION" ]; then
   source "$USER_HOME/.bashrc"
 fi
-
