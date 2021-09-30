@@ -19,7 +19,7 @@ dotfiles config status.showUntrackedFiles no
 # ensure homebrew and gh are installed
 if ! cmd_exists gh; then
   if ! cmd_exists brew; then
-    eval "$HOMEBREW_INSTALLER"
+    sudo eval "$HOMEBREW_INSTALLER"
   fi
   brew install gh
 fi
