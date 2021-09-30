@@ -108,6 +108,8 @@ brew install --cask font-hack-nerd-font
 brew install the_silver_searcher
 brew install bat
 brew install tmux
+brew install --cask docker
+softwareupdate --install-rosetta # for docker
 
 # Remove outdated versions from the cellar
 brew cleanup
