@@ -7,6 +7,8 @@ USER_HOME=$HOME # in case sudo changes HOME environment variable
 # To bootstrap these dotfiles on a computer:
 #
 #   echo "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/bootstrap/bootstrap.sh)" | source /dev/stdin
+#   
+# NOTE: you may need to "sudo echo ..."
 #
 # NOTE: we call to `source` instead of `bash -ic` to have the dotfiles alias
 # defined and the appropriate rc file sourced in the current shell session
@@ -23,6 +25,7 @@ if ! cmd_exists gh; then
     echo "sudo needed to install Homebrew"
     eval "$HOMEBREW_INSTALLER"
     [ $? = 1 ] && break
+    eval "$(/opt/homebrew/bin/brew shellenv)" # put "brew" in PATH
   fi
   brew install gh
 fi
