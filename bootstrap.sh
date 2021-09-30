@@ -31,7 +31,7 @@ if ! cmd_exists gh; then
 fi
 
 # Log into GitHub to get permission to pull the dotfiles repository
-gh auth login
+gh auth login --web
 
 # pull dotfiles to the current computer
 dotfiles remote add origin git@github.com:couetilc/dotfiles.git
