@@ -7,3 +7,5 @@
   excludesfile = ~/.gitignore_global
 [init]
   defaultBranch = main
+[status]
+  showUntrackedFiles = no

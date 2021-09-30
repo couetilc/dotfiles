@@ -2,7 +2,7 @@
 
 # To bootstrap these dotfiles on a computer:
 #
-#   bash -ic "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/master/bootstrap.sh)"
+#   bash -ic "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/main/bootstrap.sh)"
 #
 
 HOMEBREW_INSTALLER='/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
@@ -12,7 +12,7 @@ cmd_exists() { test -x "$(command -v "$1")"; }
 file_exists() { test -f "$1"; }
 
 # Set up the bare git repository where the dotfiles will live
-git init --bare "$HOME/.dotfiles"
+git init --bare "$HOME/.dotfiles" -b "main"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Ensure homebrew and gh are installed
