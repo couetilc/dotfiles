@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-HOMEBREW_INSTALLER='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+HOMEBREW_INSTALLER='/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 cmd_exists() { test -x "$(command -v "$1")"; }
 USER_HOME=$HOME # in case sudo changes HOME environment variable
 
@@ -21,7 +21,8 @@ dotfiles config status.showUntrackedFiles no
 if ! cmd_exists gh; then
   if ! cmd_exists brew; then
     echo "sudo needed to install Homebrew"
-    sudo -s eval "$HOMEBREW_INSTALLER"
+    eval "$HOMEBREW_INSTALLER"
+    [ $? = 1 ] && break
   fi
   brew install gh
 fi
