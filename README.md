@@ -2,14 +2,23 @@
 
 Bootstrap dotfiles on new computer:
 ```sh
-# to initialize repository:
-git init --bare $HOME/.dotfiles
+# Install Homebrew
+/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Place `brew` in PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# Install GitHub CLI
+brew install gh
+# Authenticate with GitHub before pullling from dotfiles repository
+gh auth login --web
+# Set default git branch to match that of dotfiles
+git config --global init.defaultBranch 'main'
+# Set up bare git repository for dotfiles
+git init --bare "$HOME/.dotfiles"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config status.showUntrackedFiles no
-# to download dotfiles:
+# Download dotfiles from remote repository
 dotfiles remote add origin git@github.com:couetilc/dotfiles.git
-dotfiles fetch origin
-dotfiles checkout main
+dotfiles pull origin main
 ```
 
 Usage:
