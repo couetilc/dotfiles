@@ -24,7 +24,6 @@ if ! cmd_exists gh; then
   if ! cmd_exists brew; then
     echo "sudo needed to install Homebrew"
     eval "$HOMEBREW_INSTALLER"
-    [ $? = 1 ] && break
     eval "$(/opt/homebrew/bin/brew shellenv)" # put "brew" in PATH
   fi
   brew install gh
