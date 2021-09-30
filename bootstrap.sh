@@ -13,8 +13,8 @@ USER_HOME=$HOME # in case sudo changes HOME environment variable
 
 # set up the bare git repository where the dotfiles will live
 git config --global init.defaultBranch 'main'
-git init --bare $HOME/.dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+git init --bare $USER_HOME/.dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$USER_HOME/.dotfiles/ --work-tree=$USER_HOME'
 dotfiles config status.showUntrackedFiles no
 
 # ensure homebrew and gh are installed
@@ -35,7 +35,8 @@ dotfiles pull origin main
 
 # source the rc file for the current shell
 if [ -n "$ZSH_VERSION" ]; then
-  source "$HOME/.zshrc"
+  source "$USER_HOME/.zshrc"
 elif [ -n "$BASH_VERSION" ]; then
-  source "$HOME/.bashrc"
+  source "$USER_HOME/.bashrc"
 fi
+
