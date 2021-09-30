@@ -8,9 +8,7 @@ file_exists() { test -f "$1"; }
 
 # To bootstrap these dotfiles on a computer:
 #
-#   echo "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/bootstrap/bootstrap.sh)" | source /dev/stdin
-#
-# NOTE: you may need to "sudo echo ..."
+#   sudo echo "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/bootstrap/bootstrap.sh)" | source /dev/stdin
 #
 # NOTE: we call to `source` instead of `bash -ic` to have the dotfiles alias
 # defined and the appropriate rc file sourced in the current shell session
@@ -40,7 +38,7 @@ gh ssh-key add $HOME/.ssh/id_ed25519.pub
 
 # pull dotfiles to the current computer
 dotfiles remote add origin git@github.com:couetilc/dotfiles.git
-dotfiles pull origin main
+dotfiles pull origin main --ff-only
 
 ## source the rc file for the current shell
 #if [ -n "$ZSH_VERSION" ]; then
