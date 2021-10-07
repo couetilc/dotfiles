@@ -73,6 +73,11 @@ brew install tmux
 # NOTE tmux plugin manager "tpm" https://github.com/tmux-plugins/tpm
 ```
 
+Install shellcheck ([GitHub](https://github.com/koalaman/shellcheck))
+```
+brew install shellcheck
+```
+
 ## Mac software setup
 
 Install 1Password 6 (from iCloud > Documents > software > 1Password-6.X.X.pkg)
