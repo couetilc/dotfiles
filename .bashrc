@@ -68,6 +68,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ec="vim $HOME/.bashrc"
+alias sc="source $HOME/.bashrc"
 
 #-- Replaced commands --#
 alias which='type -a'
@@ -131,6 +133,17 @@ fi
 alias lsa='ls -a'
 alias ll='ls -l'
 alias la='ls -a -l'
+
+#-- Mac Application aliases --#
+
+if [[ $OSTYPE == darwin* ]]; then
+alias slack="open -a /Applications/Slack.app"
+alias loom="open -a /Applications/Loom.app"
+alias notion="open -a /Applications/Notion.app"
+alias browse="open -a /Applications/Safari.app"
+alias dhub="browse https://hub.docker.com"
+fi
+
 
 #-- Git aliases --#
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

@@ -1,10 +1,12 @@
-eval "$(rbenv init -)"
+eval "$(nodenv init -)" # https://github.com/nodenv/nodenv
+eval "$(rbenv init -)" # https://github.com/rbenv/rbenv
 
 export EDITOR="vim"
 
 alias vim="nvim"
 alias ec="vim $HOME/.zshrc"
 alias sc="source $HOME/.zshrc"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 if [[ $OSTYPE == darwin* ]]; then
 alias slack="open -a /Applications/Slack.app"
