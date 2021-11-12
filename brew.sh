@@ -111,6 +111,7 @@ brew install tmux
 brew install --cask docker
 softwareupdate --install-rosetta # for docker
 brew install shellcheck
+brew install sops
 
 # Remove outdated versions from the cellar
 brew cleanup

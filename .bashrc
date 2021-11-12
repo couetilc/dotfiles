@@ -6,6 +6,9 @@ if [ -f ~/.env ]; then
   source ~/.env
 fi
 
+#-- Load Homebrew --#
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 #-- Environment config --#
 export EDITOR=vim
 export HISTSIZE=1000
@@ -181,13 +184,34 @@ alias lookbusy="cat /dev/urandom | hexdump -C | grep \"34 32\""
 alias ducks="du -cks -- * | sort -rn | head"
 
 vm() {
-  SSH_AUTH="-i ${DEV_RSA}"
   SSH_USER="$DEV_USER@$DEV_SERVER"
   if [ -x "$(command -v mosh)" ]; then
-    mosh --ssh="ssh $SSH_AUTH" "$SSH_USER"
+    mosh --server="/opt/homebrew/bin/mosh-server" "$SSH_USER"
   else
-    eval "ssh $SSH_AUTH $SSH_USER"
+    ssh "$SSH_USER"
   fi
+}
+
+export VM_PORT_FORWARDING_PID=""
+
+vmp() {
+  # https://explainshell.com/explain?cmd=ssh+-L+-N+-f+-l+-S
+  # https://unix.stackexchange.com/questions/389014/getting-a-pid-for-an-ssh-process-that-backgrounded-itself
+  ssh \
+    -L "5001:localhost:5001" \
+    -N \
+    -f \
+    -M \
+    -S "/tmp/.ssh-vmp" \
+    "$DEV_USER@$DEV_SERVER" 
+}
+
+vmp_check() {
+  ssh -S "/tmp/.ssh-vmp" -O check "$DEV_USER@$DEV_SERVER"
+}
+
+vmp_kill() {
+  ssh -S "/tmp/.ssh-vmp" -O exit "$DEV_USER@$DEV_SERVER"
 }
 
 vmx() {
@@ -288,13 +312,13 @@ export IS_LOADED_BASHRC="true"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if [ -x "$(command -v nodenv)" ]; then
+if [ -n "$(command -v nodenv)" ]; then
   eval "$(nodenv init -)" # https://github.com/nodenv/nodenv
 else
   echo "[.bashrc] 'nodenv' not installed"
 fi
 
-if [ -x "$(command -v rbenv)" ]; then
+if [ -n "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)" # https://github.com/rbenv/rbenv
 else
   echo "[.bashrc] 'rbenv' is not installed"
