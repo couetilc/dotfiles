@@ -7,7 +7,7 @@ if [ -f ~/.env ]; then
 fi
 
 #-- Load Homebrew --#
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)" # put brew into PATH
 
 #-- Environment config --#
 export EDITOR=vim
@@ -326,3 +326,5 @@ fi
 
 #--- Resources ---#
 #[1] https://github.com/atomantic/dotfiles/blob/master/homedir/.shellfn
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

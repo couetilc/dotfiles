@@ -33,6 +33,7 @@ Plug 'nvim-telescope/telescope.nvim' "https://github.com/nvim-telescope/telescop
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "https://github.com/nvim-treesitter/nvim-treesitter
 Plug 'nvim-treesitter/playground' "try with TSPlaygroundToggle
 Plug 'ishan9299/nvim-solarized-lua'
+Plug 'editorconfig/editorconfig-vim' "for project-specific settings
 endif
 
 call plug#end()
@@ -141,6 +142,10 @@ nmap <C-k> kk
 "set foldopen-=search " don't open folds when you search into them
 "set foldopen-=undo " don't open folds when you undo stuff
 
+"Plugin Settings: editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*'] "let's the plugin work well with fugitive plguin
+au FileType gitcommit let b:EditorConfig_disable = 1 " disable for git commit message filetype
+
 "Plugin Settings: NERDTree
 "toggle NERDTree with CTRL-N
 nmap <silent> <C-N> :NERDTreeToggle<CR>
@@ -191,8 +196,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 syntax off
 
 if has('nvim')
-
-  echom 'nvim:' + has('nvim')
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
