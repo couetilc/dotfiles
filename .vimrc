@@ -34,6 +34,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "https://github.com/
 Plug 'nvim-treesitter/playground' "try with TSPlaygroundToggle
 Plug 'ishan9299/nvim-solarized-lua'
 Plug 'editorconfig/editorconfig-vim' "for project-specific settings
+Plug 'ishan9299/modus-theme-vim'
 endif
 
 call plug#end()
@@ -42,7 +43,18 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
+""" COLORSCHEMES """
+
+" Sonokai (https://github.com/sainnhe/sonokai)
+" This is a nice colorscheme, but cursor color is rather opaque, hiding
+" characters)
 colorscheme sonokai
+
+" Modus Themes (High-contrast emacs theme -
+" https://protesilaos.com/emacs/modus-themes)
+" colorscheme modus-vivendi " Dark
+" colorscheme modus-operandi " Light
+
 let g:airline_theme="sol"
 
 if has('gui_running')
