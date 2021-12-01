@@ -118,7 +118,7 @@ brew install prettyping
 brew install postgresql
 brew install ripgrep
 brew install fzf # https://github.com/junegunn/fzf
-$(brew --prefix)/opt/fzf/install # install useful key bindings and fuzzy completion
+$(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc # install useful key bindings and fuzzy completion
 
 # Remove outdated versions from the cellar
 brew cleanup
