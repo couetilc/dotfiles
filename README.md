@@ -128,3 +128,56 @@ https://github.com/voku/dotfiles
 Check this out
 https://github.com/mathiasbynens/dotfiles
 
+## Tools I Use
+
+### Visualizing Ideas / Mind Mapping
+
+* [Kinopio](https://kinopio.club/): So cool, very flexible, pretty, fun.
+
+#### To Explore
+
+### Note Taking
+
+* Notion: slows down on larger pages, like my standups.
+
+#### To Explore
+
+* [nvUltra](https://nvultra.com/): modal note taking tool, very fast. Evolution
+  of this tool [nvalt](https://brettterpstra.com/projects/nvalt/) which was a
+  fork of this tool [Notational Velocity](https://notational.net/)
+
+### Writing
+
+#### To Explore
+
+* [Ulysses](https://ulysses.app/): Writing app for mac, ipad, and iphone. Minimalist
+  with professionallly oriented tools integrated, such as a proofreader and editing assistant.
+
+### Programming Languages
+
+#### To Explore
+
+* [Elm](https://elm-lang.org/): "A delightful language for reliable web applications"
+
+### Api Monitoring
+
+#### To Explore
+
+* [Checkly](https://www.checklyhq.com/): SaaS API and E2E monitoring platform, oriented
+  to modern javascript stack.
+  - ref: joe
+
+### SaaS QA Tools
+
+#### To Explore
+
+* [Rainforest](https://www.rainforestqa.com/): SaaS for building QA Automation
+  suites on your website. (heard about from joe)
+  - ref: joe
+
+### Software Developer Portals
+
+* [Backstage](https://backstage.spotify.com/): "Backstage is an open platform
+  for building developer portals, created at Spotify, donated to the CNCF, and
+  maintained by a worldwide community of contributors."
+  - ref: joe
