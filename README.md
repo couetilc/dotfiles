@@ -181,3 +181,22 @@ https://github.com/mathiasbynens/dotfiles
   for building developer portals, created at Spotify, donated to the CNCF, and
   maintained by a worldwide community of contributors."
   - ref: joe
+
+### Design Tools
+
+- [Paletton](https://paletton.com/#) great color picker.
+
+- [Leonardo](https://leonardocolor.io/?colorKeys=%236fa7ff&base=ffffff&ratios=3%2C4.5&mode=CAM02)
+  open source contrast-based color generator for theme color systems.
+
+### Software Development Tools
+
+#### To Explore
+
+- [CyberChef](https://gchq.github.io/CyberChef/) - The Cyber Swiss Army Knife.
+  "CyberChef is a simple, intuitive web app for carrying out all manner of
+  "cyber" operations within a web browser. These operations include simple
+  encoding like XOR or Base64, more complex encryption like AES, DES and
+  Blowfish, creating binary and hexdumps, compression and decompression of
+  data, calculating hashes and checksums, IPv6 and X.509 parsing, changing
+  character encodings, and much more."

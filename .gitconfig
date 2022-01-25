@@ -8,4 +8,4 @@
 [init]
   defaultBranch = main
 [status]
-  showUntrackedFiles = no
+	showUntrackedFiles = no

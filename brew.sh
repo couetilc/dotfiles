@@ -119,6 +119,8 @@ brew install postgresql
 brew install ripgrep
 brew install fzf # https://github.com/junegunn/fzf
 $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc # install useful key bindings and fuzzy completion
+brew install cloc # https://github.com/AlDanial/cloc
+brew install --cask flameshot # https://github.com/flameshot-org/flameshot
 
 # Remove outdated versions from the cellar
 brew cleanup
