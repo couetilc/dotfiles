@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 # To bootstrap these dotfiles on a computer:
 #
 #   bash -ic "$(curl -fsSL https://raw.githubusercontent.com/couetilc/dotfiles/main/bootstrap.sh)"

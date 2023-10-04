@@ -21,7 +21,6 @@ export HISTCONTROL=ignorespace
 #-- Terminal options --#
 set -o emacs # move around the terminal line with emacs key commands
 shopt -s checkwinsize # check the window size after each command to prevent readline wrap problems
-shopt -s globstar # '**' double star now expands and recurses sub-directories
 
 #-- Command Prompt Modifications --#
 # set variable identifying the chroot you work in (used in the prompt below)
@@ -97,6 +96,7 @@ fi
 
 if [ -x "$(command -v nvim)" ]; then
   alias vim='nvim'
+  export EDITOR=nvim
 else
   echo "[.bashrc] 'neovim' not installed"
 fi
@@ -328,3 +328,19 @@ fi
 #[1] https://github.com/atomantic/dotfiles/blob/master/homedir/.shellfn
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export GOPATH=$(go env GOPATH)
+
+alias pip=pip3
+alias tree="tree --gitignore"
+
+_direnv_hook() {
+  local previous_exit_status=$?;
+  trap -- '' SIGINT;
+  eval "$("/opt/homebrew/bin/direnv" export bash)";
+  trap - SIGINT;
+  return $previous_exit_status;
+};
+if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
+  PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+fi

@@ -1,0 +1,7 @@
+{
+  "activate.nvim": { "branch": "main", "commit": "21f61096e7c685ec658216e308ed77563834d2e5" },
+  "lazy.nvim": { "branch": "main", "commit": "82da5a004867be2cc96c345430d9381f991cf2e6" },
+  "plenary.nvim": { "branch": "master", "commit": "9ce85b0f7dcfe5358c0be937ad23e456907d410b" },
+  "sonokai": { "branch": "master", "commit": "17308ee6d9c764bfc1e0fa97213e7a99701b4144" },
+  "telescope.nvim": { "branch": "master", "commit": "54930e1abfc94409e1bb9266e752ef8379008592" }
+}

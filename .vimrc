@@ -217,8 +217,9 @@ require'nvim-treesitter.configs'.setup {
     incremental_selection = {
         enable = false,
     },
-    ensure_installed = 'maintained'
 }
 EOF
 
 endif
+
+map <Space> <Leader>
