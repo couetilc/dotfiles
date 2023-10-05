@@ -1,1 +1,6 @@
 vim.keymap.set('n', '<leader>gg', ':Git<CR>')
+vim.keymap.set('n', '<leader>gc', ':Git commit<CR>')
+vim.keymap.set('n', '<leader>gb', ':Git blame<CR>')
+vim.keymap.set('n', '<leader>gd', ':Git diff<CR>')
+vim.keymap.set('n', '<leader>gl', ':Git log<CR>')
+vim.keymap.set('n', '<leader>gs', ':Git status<CR>')

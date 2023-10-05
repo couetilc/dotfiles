@@ -1,17 +1,30 @@
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers {
-	-- The first entry (without a key) will be the default handler
-	-- and will be called for each installed server that doesn't have
-	-- a dedicated handler.
-	function (server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup {}
-		-- one of the thins I can do here, not sure if I should, is in outer scope
-		-- local capabilities = cmp_nvim_lsp.default_capabilities()
-		-- lspconfig[server_name].setup({ capabilities = capabilities })
-	end,
-}
+local lsp_zero = require('lsp-zero')
 
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {},
+  handlers = {
+    lsp_zero.default_setup,
+  },
+})
+-- require("mason-lspconfig").setup_handlers {
+-- 	-- The first entry (without a key) will be the default handler
+-- 	-- and will be called for each installed server that doesn't have
+-- 	-- a dedicated handler.
+-- 	function (server_name) -- default handler (optional)
+-- 		require("lspconfig")[server_name].setup {}
+-- 		-- one of the thins I can do here, not sure if I should, is in outer scope
+-- 		-- local capabilities = cmp_nvim_lsp.default_capabilities()
+-- 		-- lspconfig[server_name].setup({ capabilities = capabilities })
+-- 	end,
+-- }
+--
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
@@ -19,6 +32,28 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    -- `Enter` key to confirm completion
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+
+    -- Ctrl+Space to trigger completion menu
+    ['<C-Space>'] = cmp.mapping.complete(),
+
+    -- Navigate between snippet placeholder
+    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+
+    -- Scroll up and down in the completion documentation
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  })
+})
+
+--[[ 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -48,4 +83,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
-})
+}) ]]
