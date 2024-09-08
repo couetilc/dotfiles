@@ -354,7 +354,26 @@ cs() {
 }
 
 xinu() {
-  mosh ccouetil@xinu07.cs.purdue.edu
+  IDs="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21"
+  available="$( echo "$IDs" | sed 's/ /\n/g' | shuf | while read ID; do
+      timeout 1 ping -o "xinu$ID.cs.purdue.edu" > /dev/null
+      if [ $? -eq 0 ]; then
+	echo $ID
+	break
+      fi
+    done
+  )"
+
+  if [ -z "$available" ]; then
+    echo "Error: No xinu server available"
+    return 1
+  fi
+
+  mosh --ssh="ssh -o ConnectTimeout=1" ccouetil@xinu${available}.cs.purdue.edu
+  if [ $? -ne 0 ]; then
+    echo
+    echo "You may not be on Purdue's VPN. Try ssh'ing into data.cs.purdue.edu first (otherwise, try increasing the timeout.)"
+  fi
 }
 
 # Port forwarding: tailscale ssh connor@boots -L8080:localhost:2342 
