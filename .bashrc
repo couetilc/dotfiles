@@ -157,7 +157,8 @@ alias gls="git log --stat"
 alias ga="git add"
 alias gc="git commit"
 alias gco="git checkout"
-alias gp="git pull"
+alias gp="git push"
+alias gpl="git pull"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gf="git fetch"
@@ -329,7 +330,10 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export GOPATH=$(go env GOPATH)
+
+if [ -n "$(builtin type -P go)" ]; then
+  export GOPATH=$(go env GOPATH)
+fi
 
 alias pip=pip3
 alias tree="tree --gitignore"
@@ -344,3 +348,16 @@ _direnv_hook() {
 if ! [[ "${PROMPT_COMMAND:-}" =~ _direnv_hook ]]; then
   PROMPT_COMMAND="_direnv_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 fi
+
+cs() {
+  mosh ccouetil@data.cs.purdue.edu
+}
+
+xinu() {
+  mosh ccouetil@xinu07.cs.purdue.edu
+}
+
+# Port forwarding: tailscale ssh connor@boots -L8080:localhost:2342 
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+eval "$(fzf --bash)"

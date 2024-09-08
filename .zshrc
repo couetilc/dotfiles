@@ -22,3 +22,5 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export GOPATH=$(go env GOPATH)
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
