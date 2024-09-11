@@ -356,7 +356,7 @@ cs() {
 xinu() {
   IDs="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21"
   available="$( echo "$IDs" | sed 's/ /\n/g' | shuf | while read ID; do
-      timeout 1 ping -o "xinu$ID.cs.purdue.edu" > /dev/null
+      timeout 1 ping -c1 "xinu$ID.cs.purdue.edu" > /dev/null
       if [ $? -eq 0 ]; then
 	echo $ID
 	break
